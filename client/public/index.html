@@ -15,6 +15,17 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7y3ja35ivgV5h_vkR6TlVY6THt1QJdFA&callback=initMap&libraries=visualization"
+    async defer></script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.

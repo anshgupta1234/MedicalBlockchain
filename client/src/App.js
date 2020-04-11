@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./getWeb3";
+import Web3 from 'web3';
 
-import "./App.css";
+import "./App.scss";
 
 class App extends Component {
   state = { storageValue: 0, web3: null, accounts: null, contract: null };
@@ -35,22 +36,31 @@ class App extends Component {
     }
   };
 
-  runExample = async () => {
-    const { accounts, contract } = this.state;
+  // runExample = async () => {
+  //   const { accounts, contract } = this.state;
 
-    // Stores a given value, 5 by default.
-    await contract.methods.set(5).send({ from: accounts[0] });
+  //   // Stores a given value, 5 by default.
+  //   await contract.methods.set(5).send({ from: accounts[0] });
 
-    // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
+  //   // Get the value from the contract to prove it worked.
+  //   const response = await contract.methods.get().call();
     
-    // Update state with the result.
-    this.setState({ storageValue: response });
-  };
+  //   // Update state with the result.
+  //   this.setState({ storageValue: response });
+  // };
 
   render() {
     if (!this.state.web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
+      return (
+        <div className="login-div">
+          <div class="animation">
+            <span class="first">Please login</span> 
+            <span class="oh">
+            <span class="second">with Metamask</span>
+            </span>
+          </div>
+        </div>
+      )
     }
     return (
       <div className="App">
