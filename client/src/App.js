@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./getWeb3";
 import Web3 from 'web3';
+import { Sidenav , Nav, Icon, Dropdown} from 'rsuite';
+import 'rsuite/dist/styles/rsuite-default.css';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 import "./App.scss";
 
@@ -63,19 +72,46 @@ class App extends Component {
       )
     }
     return (
-      <div className="App">
-        <h1>Good to Go!</h1>
-        <p>Your Truffle Box is installed and ready.</p>
-        <h2>Smart Contract Example</h2>
-        <p>
-          If your contracts compiled and migrated successfully, below will show
-          a stored value of 5 (by default).
-        </p>
-        <p>
-          Try changing the value stored on <strong>line 40</strong> of App.js.
-        </p>
-        <div>The stored value is: {this.state.storageValue}</div>
-      </div>
+      
+        <div className="App">
+          <Router>
+            <div className="sidenav-div">
+              <Sidenav
+                activeKey={this.state.activeKey}
+                onSelect={this.handleSelect}
+                className="sideNav"
+                appearance="inverse"
+                >
+                <Sidenav.Body>
+                  <Nav>
+                    <Link to="/dashboard" style={{textDecoration : "none"}}>
+                      <Nav.Item eventKey="1" icon={<Icon icon="dashboard" />}>
+                        Dashboard
+                      </Nav.Item>
+                    </Link>
+                    <Link to="/profile" style={{textDecoration : "none"}}>
+                      <Nav.Item eventKey="1" icon={<Icon icon="user" />}>
+                        Profile
+                      </Nav.Item>
+                    </Link>
+                    <Link to="/transactions" style={{textDecoration : "none"}}>
+                      <Nav.Item eventKey="1" icon={<Icon icon="history" />}>
+                        Transactions
+                      </Nav.Item>
+                    </Link>
+                    <Link to="/map" style={{textDecoration : "none"}}>
+                      <Nav.Item eventKey="2" icon={<Icon icon="map" />}>
+                        Map
+                      </Nav.Item>
+                    </Link>
+                  </Nav>
+                </Sidenav.Body>
+              </Sidenav>
+            </div>
+            <div className="content-div"></div>
+          </Router>
+        </div>
+
     );
   }
 }
