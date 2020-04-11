@@ -4,6 +4,8 @@ import getWeb3 from "./getWeb3";
 import Web3 from 'web3';
 import { Sidenav , Nav, Icon, Dropdown} from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
+import Map from './components/map'
+
 
 import {
   BrowserRouter as Router,
@@ -96,7 +98,12 @@ class App extends Component {
                     </Link>
                     <Link to="/transactions" style={{textDecoration : "none"}}>
                       <Nav.Item eventKey="1" icon={<Icon icon="history" />}>
-                        Transactions
+                        History
+                      </Nav.Item>
+                    </Link>
+                    <Link to="/requests" style={{textDecoration : "none"}}>
+                      <Nav.Item eventKey="2" icon={<Icon icon="check" />}>
+                        Pending Requests
                       </Nav.Item>
                     </Link>
                     <Link to="/map" style={{textDecoration : "none"}}>
@@ -108,7 +115,28 @@ class App extends Component {
                 </Sidenav.Body>
               </Sidenav>
             </div>
-            <div className="content-div"></div>
+            <div className="content-div">
+              <div className="card-div">
+                <Switch>
+                  <Route path="/map">
+                    <Map></Map>
+                  </Route>
+                  <Route path="/map">
+                    <Map></Map>
+                  </Route>
+                  <Route path="/map">
+                    <Map></Map>
+                  </Route>
+                  <Route path="/map">
+                    <Map></Map>
+                  </Route>
+                  <Route path="/map">
+                    <Map></Map>
+                  </Route>
+                </Switch>
+              </div>
+              
+            </div>
           </Router>
         </div>
 
