@@ -9,7 +9,9 @@ class MapContainer extends Component {
         super()
         this.state = { 
             "hospitals" : true,
-            "facemasks" : true
+            "facemasks" : true,
+            "ventil" : true,
+            "glove" : true
         }
     }
     componentDidMount(){
@@ -81,7 +83,70 @@ class MapContainer extends Component {
         }
        
     }
+    ventil(){
+        if (this.state.ventil === true){
+            var heatmapData = []
 
+            Hos.features.map((value, index) => {
+              var weight = Math.floor(Math.random() * 10)
+              heatmapData.push({location: new google.maps.LatLng( value.attributes.LATITUDE, value.attributes.LONGITUDE), weight: weight * Math.floor(Math.random() * 500)})
+              //heatmapData[heatmapData.length - 1].setMap(map)
+    
+            })
+    
+            var heatmapv = new google.maps.visualization.HeatmapLayer({
+                data: heatmapData,
+                radius : 20
+            });
+            heatmapv.setMap(this.state.map);
+    
+            this.setState(() => {
+                return {
+                    "heatmapv" : heatmapv,
+                    "ventil" : false
+                }
+            });
+        }else{
+            console.log("hi")
+            
+            this.state.heatmapv.setMap(null);
+            
+            this.setState({ventil : true})
+        }
+       
+    }
+    glove(){
+        if (this.state.glove === true){
+            var heatmapData = []
+
+            Hos.features.map((value, index) => {
+              var weight = Math.floor(Math.random() * 10)
+              heatmapData.push({location: new google.maps.LatLng( value.attributes.LATITUDE, value.attributes.LONGITUDE), weight: weight * Math.floor(Math.random() * 500)})
+              //heatmapData[heatmapData.length - 1].setMap(map)
+    
+            })
+    
+            var heatmapg = new google.maps.visualization.HeatmapLayer({
+                data: heatmapData,
+                radius : 20
+            });
+            heatmapg.setMap(this.state.map);
+    
+            this.setState(() => {
+                return {
+                    "heatmapg" : heatmapg,
+                    "glove" : false
+                }
+            });
+        }else{
+            console.log("hi")
+            
+            this.state.heatmapg.setMap(null);
+            
+            this.setState({glove : true})
+        }
+       
+    }
 
 
     addMarker(){
@@ -128,8 +193,8 @@ class MapContainer extends Component {
         <div style={{width : "100%", height: "10%", display: "flex", justifyContent : "center", alignItems : "center"}}> 
             <Button appearance="primary" onClick={() => this.addMarker()} active style={{margin: "20px"}}>Hospitals</Button>
             <Button appearance="primary" onClick={() => this.facemask()} active style={{margin: "20px"}}>Facemasks</Button>
-            <Button appearance="primary" onClick={() => this.addMarker()} active style={{margin: "20px"}}>Ventilators</Button>
-            <Button appearance="primary" onClick={() => this.addMarker()} active style={{margin: "20px"}}>Gloves</Button>
+            <Button appearance="primary" onClick={() => this.ventil()} active style={{margin: "20px"}}>Ventilators</Button>
+            <Button appearance="primary" onClick={() => this.glove()} active style={{margin: "20px"}}>Gloves</Button>
         </div>
       </div>
     )
