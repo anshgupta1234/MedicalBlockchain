@@ -22,15 +22,22 @@ import "./App.scss";
 class App extends Component {
   constructor(){
     super()
-    this.test = this.test.bind(this);
   }
-  state = { storageValue: 0, web3: null, accounts: null, contract: null };
 
-  test(data){
+  state = { storageValue: 0, web3: null, accounts: null, contract: null, masks: 0, ventilators: 0, gloves: 0, history: [] };
+
+  updateValues = (data) => {
     console.log(data)
-    this.setState({req : data})
+    switch(data.type){
+      case 'masks':
+        this.setState({ masks: this.state.masks + data.amount })
+      case 'ventilators':
+        this.setState({ ventilators: this.state.ventilators + data.amount })
+      case 'gloves':
+        this.setState({ gloves: this.state.gloves + data.amount })
+    }
+    this.setState({ history: [...this.state.history, { type: data.type, amount: data.amount, time: new Date() }] })
   }
-
 
   componentDidMount = async () => {
     try {
@@ -137,16 +144,16 @@ class App extends Component {
               <div className="card-div" >
                 <Switch>
                   <Route path="/dashboard">
-                    <Dashboard data={this.state.req}></Dashboard>
+                    <Dashboard data={this.state}></Dashboard>
                   </Route>
                   <Route path="/profile">
                     <Profile></Profile>
                   </Route>
                   <Route path="/transactions">
-                    <Transactions></Transactions>
+                    <Transactions history={this.state.history}></Transactions>
                   </Route>
                   <Route path="/requests">
-                    <Requests wallet={this.state.accounts[0]} contract={this.state.contract} web3={this.state.web3}></Requests>
+                    <Requests wallet={this.state.accounts[0]} contract={this.state.contract} web3={this.state.web3} callback={this.updateValues}></Requests>
                   </Route>
                   <Route path="/donate">
                     <Donate></Donate>

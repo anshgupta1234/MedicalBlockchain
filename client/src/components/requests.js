@@ -7,7 +7,7 @@ export default class Requests extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            pending: [{_id : "ewjfoijweofijweo", type : "masks", amount : "6"}]
+            pending: []
         }
         this.ipfs = new IPFS({ host:'ipfs.infura.io', port: 5001, protocol: 'https' })
     }
@@ -28,6 +28,9 @@ export default class Requests extends React.Component {
     }
 
     accept = async(req, i) => {
+        // Callback
+        console.log(req)
+        this.props.callback(req)
         const response = await fetch("http://localhost:8000/accept", {
             "method": "POST",
             headers: {
@@ -39,7 +42,6 @@ export default class Requests extends React.Component {
         }).then(res => res.json()).then(res => {
             console.log(res)
         }).catch(err => {
-            this.props.testt("hello")
             console.log(err)
         })
         // Delete pending from list
@@ -68,7 +70,7 @@ export default class Requests extends React.Component {
                             <div style={{ height: '60px', width: '100%', margin: '10px', padding: '15px', background: '#ffe5b4', justifyContent: 'flex-start', borderRadius: 10, display: 'flex', alignItems: 'center' }}>
                                 <p style={{ fontSize: '18px' }}>{req.amount} {req.type}</p>
                                 <div style={{ marginLeft: 'auto', height: '60px', width: '150px', display: 'flex', alignItems: 'center' }}>
-                                    <Button color='green' size='md' appearance='primary' style={{ marginLeft: 'auto'}} onClick={() => this.accept(req._id, i)}>Accept</Button>
+                                    <Button color='green' size='md' appearance='primary' style={{ marginLeft: 'auto'}} onClick={() => this.accept(req, i)}>Accept</Button>
                                     <Button color='red' size='md' appearance='primary' style={{ marginLeft: 'auto' }}>Decline</Button>
                                 </div>
                             </div>
