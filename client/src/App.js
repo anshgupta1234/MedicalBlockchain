@@ -5,7 +5,10 @@ import Web3 from 'web3';
 import { Sidenav , Nav, Icon, Dropdown} from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import Map from './components/map'
-
+import Dashboard from './components/dashboard'
+import Requests from './components/requests'
+import Transactions from './components/transactions'
+import Profile from './components/profile'
 
 import {
   BrowserRouter as Router,
@@ -119,16 +122,16 @@ class App extends Component {
               <div className="card-div">
                 <Switch>
                   <Route path="/dashboard">
-                    <Map></Map>
+                    <Dashboard></Dashboard>
                   </Route>
                   <Route path="/profile">
-                    <Map></Map>
+                    <Profile></Profile>
                   </Route>
                   <Route path="/transactions">
-                    <Map></Map>
+                    <Transactions></Transactions>
                   </Route>
                   <Route path="/requests">
-                    <Map></Map>
+                    <Requests></Requests>
                   </Route>
                   <Route path="/map">
                     <Map></Map>

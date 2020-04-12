@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Transactions extends React.Component {
+export default class Transactions extends React.Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -13,4 +13,3 @@ class Transactions extends React.Component {
     }
 }
  
-export default Requests;
