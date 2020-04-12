@@ -60,25 +60,6 @@ class Profile extends React.Component {
                             </div>
                         </FormGroup>
 
-                        <FormGroup style={{width : "100%", display: "flex"}}>
-                            <div style={{width : "30%"}}>
-                                <ControlLabel style={{color : "white", width : "50%"}}>Required Masks</ControlLabel>
-                                <FormControl name="email" type="email" />
-                            </div>
-                            <div style={{flex : "1"}}></div>
-                            <div style={{width : "30%"}}>
-                                <ControlLabel style={{color : "white", width : "50%"}}>Required Ventilators</ControlLabel>
-                                <FormControl name="email" type="email" />
-                            </div>
-                            <div style={{flex : "1"}}></div>
-                            <div style={{width : "30%"}}>
-                                <ControlLabel style={{color : "white", width : "50%"}}>Required Gloves</ControlLabel>
-                                <FormControl name="email" type="email" />
-                            </div>
-                        </FormGroup>
-
-
- 
                         <FormGroup>
                         <ButtonToolbar>
                             <Button appearance="inverse" onClick={() => this.next1()}>Submit</Button>
