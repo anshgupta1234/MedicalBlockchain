@@ -6,7 +6,7 @@ export default class Requests extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            pending: []
+            pending: [{_id : "ewjfoijweofijweo", type : "masks", amount : "6"}]
         }
     }
 
@@ -57,9 +57,9 @@ export default class Requests extends React.Component {
                         this.state.pending.map((req, i) => (
                             <div style={{ height: '60px', width: '100%', margin: '10px', padding: '15px', background: '#ffe5b4', justifyContent: 'flex-start', borderRadius: 10, display: 'flex', alignItems: 'center' }}>
                                 <p style={{ fontSize: '18px' }}>{req.amount} {req.type}</p>
-                                <div style={{ marginLeft: 'auto', height: '60px', width: '100px', display: 'flex', alignItems: 'center' }}>
-                                    <Button color='green' size='md' appearance='primary' style={{ marginLeft: 'auto' }} onClick={() => this.accept(req._id, i)}>Yes</Button>
-                                    <Button color='red' size='md' appearance='primary' style={{ marginLeft: 'auto' }}>No</Button>
+                                <div style={{ marginLeft: 'auto', height: '60px', width: '150px', display: 'flex', alignItems: 'center' }}>
+                                    <Button color='green' size='md' appearance='primary' style={{ marginLeft: 'auto'}} onClick={() => this.accept(req._id, i)}>Accept</Button>
+                                    <Button color='red' size='md' appearance='primary' style={{ marginLeft: 'auto' }}>Decline</Button>
                                 </div>
                             </div>
                         ))

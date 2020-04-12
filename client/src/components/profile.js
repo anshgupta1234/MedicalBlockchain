@@ -26,7 +26,7 @@ class Profile extends React.Component {
     render() { 
         return ( 
             <div style={{display: "flex", width: "100%", height:"100%", flex : "1"}}>
-                <div style={{width: "40%", background: "#3498ff", padding: "20px", height: "100%"}} >
+                <div style={{width: "40%", background: "#3498ff", padding: "20px", height: "100%", borderRadius : "10px 0px 0px 10px"}} >
                     <Form fluid>
                         <FormGroup>
                             <ControlLabel style={{color : "white"}}>Hospital Name</ControlLabel>
@@ -88,7 +88,7 @@ class Profile extends React.Component {
                     </Form>
                 </div> 
                 <div style={{width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems : "center"}}>                
-                    <h2>Hospital Registration Status</h2>
+                    <h3>Hospital Registration Status</h3>
                     <div style={{height: "40%"}}></div>
                     <Steps current={this.state.num} style={{width: "80%"}}>
                         <Steps.Item title="Submitted" />

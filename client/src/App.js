@@ -139,7 +139,7 @@ class App extends Component {
                   <Route path="/requests">
                     <Requests wallet={this.state.accounts[0]}></Requests>
                   </Route>
-                  <Route path="/requests">
+                  <Route path="/donate">
                     <Donate></Donate>
                   </Route>
                   <Route path="/map">
