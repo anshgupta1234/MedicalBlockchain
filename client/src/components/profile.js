@@ -7,7 +7,7 @@ import { Steps } from 'rsuite';
 class Profile extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { num : 0 }
+        this.state = { num : 0, formValue: {} }
     }
 
     next1(){
@@ -22,12 +22,14 @@ class Profile extends React.Component {
                 return {num : prevState.num + 1}
             })
         }, 5000);
+        console.log(this.state.formValue)
     }
+
     render() { 
         return ( 
             <div style={{display: "flex", width: "100%", height:"100%", flex : "1"}}>
                 <div style={{width: "40%", background: "#3498ff", padding: "20px", height: "100%", borderRadius : "10px 0px 0px 10px"}} >
-                    <Form fluid>
+                    <Form fluid onChange={formValue => this.setState({ formValue })}>
                         <FormGroup>
                             <ControlLabel style={{color : "white"}}>Hospital Name</ControlLabel>
                             <FormControl name="name" />
@@ -45,17 +47,17 @@ class Profile extends React.Component {
                         </FormGroup>
                         <FormGroup style={{width : "100%", display: "flex"}}>
                             <div style={{width : "30%"}}>
-                                <ControlLabel style={{color : "white", width : "50%"}}>Number of Masks</ControlLabel>
+                                <ControlLabel style={{color : "white", width : "50%"}}>Masks</ControlLabel>
                                 <FormControl name="email" type="email" />
                             </div>
                             <div style={{flex : "1"}}></div>
                             <div style={{width : "30%"}}>
-                                <ControlLabel style={{color : "white", width : "50%"}}>Number of Ventilators</ControlLabel>
+                                <ControlLabel style={{color : "white", width : "50%"}}>Ventilators</ControlLabel>
                                 <FormControl name="email" type="email" />
                             </div>
                             <div style={{flex : "1"}}></div>
                             <div style={{width : "30%"}}>
-                                <ControlLabel style={{color : "white", width : "50%"}}>Number of Gloves</ControlLabel>
+                                <ControlLabel style={{color : "white", width : "50%"}}>Gloves</ControlLabel>
                                 <FormControl name="email" type="email" />
                             </div>
                         </FormGroup>
