@@ -61,10 +61,23 @@ class MapContainer extends Component {
               //heatmapData[heatmapData.length - 1].setMap(map)
     
             })
-    
+
+            var g = [
+                'rgba(255, 0, 0, 0)',
+                'rgba(255, 255, 0, 0.9)',
+                'rgba(0, 255, 0, 0.7)',
+                'rgba(173, 255, 47, 0.5)',
+                'rgba(152, 251, 152, 0)',
+                'rgba(152, 251, 152, 0)',
+                'rgba(0, 0, 238, 0.5)',
+                'rgba(0, 0, 250, 1)',
+                'rgba(0, 0, 250, 1)',
+                'rgba(0, 0, 250, 1)'
+            ]
+
             var heatmapf = new google.maps.visualization.HeatmapLayer({
                 data: heatmapData,
-                radius : 20
+                radius : 50,
             });
             heatmapf.setMap(this.state.map);
     
@@ -96,7 +109,7 @@ class MapContainer extends Component {
     
             var heatmapv = new google.maps.visualization.HeatmapLayer({
                 data: heatmapData,
-                radius : 20
+                radius : 50
             });
             heatmapv.setMap(this.state.map);
     
@@ -128,7 +141,7 @@ class MapContainer extends Component {
     
             var heatmapg = new google.maps.visualization.HeatmapLayer({
                 data: heatmapData,
-                radius : 20
+                radius : 50
             });
             heatmapg.setMap(this.state.map);
     
@@ -156,7 +169,7 @@ class MapContainer extends Component {
 
             var icon = {
               url: Icon, // url
-              scaledSize: new google.maps.Size(12, 12), // scaled size
+              scaledSize: new google.maps.Size(20, 20), // scaled size
               origin: new google.maps.Point(0,0), // origin
               anchor: new google.maps.Point(0, 0) // anchor
           };
