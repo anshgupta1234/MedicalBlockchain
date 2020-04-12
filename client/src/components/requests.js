@@ -38,6 +38,9 @@ export default class Requests extends React.Component {
             })
         }).then(res => res.json()).then(res => {
             console.log(res)
+        }).catch(err => {
+            this.props.testt("hello")
+            console.log(err)
         })
         // Delete pending from list
         let temp = this.state.pending;

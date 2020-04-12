@@ -20,7 +20,17 @@ import {
 import "./App.scss";
 
 class App extends Component {
+  constructor(){
+    super()
+    this.test = this.test.bind(this);
+  }
   state = { storageValue: 0, web3: null, accounts: null, contract: null };
+
+  test(data){
+    console.log(data)
+    this.setState({req : data})
+  }
+
 
   componentDidMount = async () => {
     try {
@@ -127,7 +137,7 @@ class App extends Component {
               <div className="card-div" >
                 <Switch>
                   <Route path="/dashboard">
-                    <Dashboard></Dashboard>
+                    <Dashboard data={this.state.req}></Dashboard>
                   </Route>
                   <Route path="/profile">
                     <Profile></Profile>
