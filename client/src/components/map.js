@@ -7,7 +7,10 @@ const google = window.google
 class MapContainer extends Component {
     constructor(){
         super()
-        this.state = { "hospitals" : true}
+        this.state = { 
+            "hospitals" : true,
+            "facemasks" : true
+        }
     }
     componentDidMount(){
 
@@ -32,16 +35,55 @@ class MapContainer extends Component {
             zoom: 11
         });
 
+
         var heatmap = new google.maps.visualization.HeatmapLayer({
             data: heatmapData,
             radius : 30
         });
-        heatmap.setMap(map);
+
+
+        //heatmap.setMap(map);
 
         this.setState({map : map})
 
 
     }
+
+    facemask(){
+        if (this.state.facemasks === true){
+            var heatmapData = []
+
+            Hos.features.map((value, index) => {
+              var weight = Math.floor(Math.random() * 10)
+              heatmapData.push({location: new google.maps.LatLng( value.attributes.LATITUDE, value.attributes.LONGITUDE), weight: weight * Math.floor(Math.random() * 500)})
+              //heatmapData[heatmapData.length - 1].setMap(map)
+    
+            })
+    
+            var heatmapf = new google.maps.visualization.HeatmapLayer({
+                data: heatmapData,
+                radius : 20
+            });
+            heatmapf.setMap(this.state.map);
+    
+            this.setState(() => {
+                return {
+                    "heatmapf" : heatmapf,
+                    "facemasks" : false
+                }
+            });
+        }else{
+            console.log("hi")
+            
+            this.state.heatmapf.setMap(null);
+            
+            this.setState({facemasks : true})
+        }
+       
+    }
+
+
+
     addMarker(){
         if (this.state.hospitals == true){
             console.log(this.state.hospitals)
@@ -81,9 +123,14 @@ class MapContainer extends Component {
     }
   render() {
     return (
-      <div style={{ height: '50vh', width: '50%' }}>
-        <div id="map"></div>
-        <Button appearance="primary" onClick={() => this.addMarker()} active>Toggle Hospitals</Button>
+      <div style={{ height: '100%', width: '100%', display: "flex", flexDirection: "column" }}>
+        <div id="map" style={{height: "90%"}}></div>
+        <div style={{width : "100%", height: "10%", display: "flex", justifyContent : "center", alignItems : "center"}}> 
+            <Button appearance="primary" onClick={() => this.addMarker()} active style={{margin: "20px"}}>Hospitals</Button>
+            <Button appearance="primary" onClick={() => this.facemask()} active style={{margin: "20px"}}>Facemasks</Button>
+            <Button appearance="primary" onClick={() => this.addMarker()} active style={{margin: "20px"}}>Ventilators</Button>
+            <Button appearance="primary" onClick={() => this.addMarker()} active style={{margin: "20px"}}>Gloves</Button>
+        </div>
       </div>
     )
   }
