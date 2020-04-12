@@ -118,16 +118,16 @@ class App extends Component {
             <div className="content-div">
               <div className="card-div">
                 <Switch>
-                  <Route path="/map">
+                  <Route path="/dashboard">
                     <Map></Map>
                   </Route>
-                  <Route path="/map">
+                  <Route path="/profile">
                     <Map></Map>
                   </Route>
-                  <Route path="/map">
+                  <Route path="/transactions">
                     <Map></Map>
                   </Route>
-                  <Route path="/map">
+                  <Route path="/requests">
                     <Map></Map>
                   </Route>
                   <Route path="/map">
