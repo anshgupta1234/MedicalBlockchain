@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./getWeb3";
-import Web3 from 'web3';
 import { Sidenav , Nav, Icon, Dropdown} from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import Map from './components/map'
@@ -112,7 +111,7 @@ class App extends Component {
                     </Link>
                     <Link to="/donate" style={{textDecoration : "none"}}>
                       <Nav.Item eventKey="2" icon={<Icon icon="heart-o" />}>
-                        Donate
+                        Supply
                       </Nav.Item>
                     </Link>
                     <Link to="/map" style={{textDecoration : "none"}}>
@@ -137,7 +136,7 @@ class App extends Component {
                     <Transactions></Transactions>
                   </Route>
                   <Route path="/requests">
-                    <Requests wallet={this.state.accounts[0]}></Requests>
+                    <Requests wallet={this.state.accounts[0]} contract={this.state.contract} web3={this.state.web3}></Requests>
                   </Route>
                   <Route path="/requests">
                     <Donate></Donate>
