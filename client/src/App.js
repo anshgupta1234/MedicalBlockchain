@@ -9,6 +9,8 @@ import Requests from './components/requests'
 import Transactions from './components/transactions'
 import Profile from './components/profile'
 import Donate from './components/donate'
+import History from './components/history'
+
 
 import {
   BrowserRouter as Router,
@@ -116,7 +118,7 @@ class App extends Component {
                         Profile
                       </Nav.Item>
                     </Link>
-                    <Link to="/transactions" style={{textDecoration : "none"}}>
+                    <Link to="/history" style={{textDecoration : "none"}}>
                       <Nav.Item eventKey="1" icon={<Icon icon="history" />}>
                         History
                       </Nav.Item>
@@ -149,8 +151,8 @@ class App extends Component {
                   <Route path="/profile">
                     <Profile></Profile>
                   </Route>
-                  <Route path="/transactions">
-                    <Transactions history={this.state.history}></Transactions>
+                  <Route path="/history">
+                    <History history={this.state.history}></History>
                   </Route>
                   <Route path="/requests">
                     <Requests wallet={this.state.accounts[0]} contract={this.state.contract} web3={this.state.web3} callback={this.updateValues}></Requests>
