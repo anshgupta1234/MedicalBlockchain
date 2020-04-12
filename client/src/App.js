@@ -125,7 +125,7 @@ class App extends Component {
               </Sidenav>
             </div>
             <div className="content-div">
-              <div className="card-div">
+              <div className="card-div" >
                 <Switch>
                   <Route path="/dashboard">
                     <Dashboard></Dashboard>

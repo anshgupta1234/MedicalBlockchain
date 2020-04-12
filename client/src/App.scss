@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+
   display: flex;
   height: 100vh;
   overflow: hidden;
@@ -189,4 +189,6 @@ body {
     height: 80%;
     background: white;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
   }
