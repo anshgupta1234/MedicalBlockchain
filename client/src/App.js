@@ -100,6 +100,7 @@ class App extends Component {
         <div className="App">
           <Router>
             <div className="sidenav-div">
+              <div className="logo-div"></div>
               <Sidenav
                 activeKey={this.state.activeKey}
                 onSelect={this.handleSelect}
