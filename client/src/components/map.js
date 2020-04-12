@@ -70,7 +70,7 @@ class MapContainer extends Component {
                 }
             });
         }
-        else{
+        else {
 
             for (var i = 0; i < this.state.markerList.length; i++) {
                 this.state.markerList[i].setMap(null);
