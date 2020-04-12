@@ -10,23 +10,16 @@ export default class Requests extends React.Component {
         }
     }
 
-    checkPending = () => {
-        fetch("http://localhost:8000/request", {
+    checkPending = async() => {
+        const response = await fetch("http://localhost:8000/request", {
             "method": "POST",
-            mode: 'no-cors',
-            "headers": {
-                "content-type": "application/json"
+            headers: {
+                'content-type': 'application/json'
             },
             "body": JSON.stringify({
-                "hospitalId": "2lksdjfnart74"
+                "hospitalId": "252sdfgsdgv"
             })
-        })
-        .then(response => {
-            console.log(response); 
-        })
-        .catch(err => {
-            console.log(err);
-        });
+        }).then(res => res.json()).then(res => console.log(res))
     }
 
     render() { 

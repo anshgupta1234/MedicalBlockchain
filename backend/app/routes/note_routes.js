@@ -15,14 +15,16 @@ module.exports = function (app, db) {
 
   app.post('/request', (req, res) => {
     transactions = []
+    console.log(req.body)
     db.collection('transactions')
     .find({ "hospitalId": req.body.hospitalId })
     .forEach(s => {
       if(s.status === "pending"){
         transactions.push(s)
+        console.log("Found one!")
       }
     })
-    .then(r => res.send({ data: true, transactions }))
+    .then(r => res.send({ data: transactions }))
   })
 
   app.post('/accept', (req, res) => {
