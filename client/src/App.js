@@ -124,7 +124,7 @@ class App extends Component {
               </Sidenav>
             </div>
             <div className="content-div">
-              <div className="card-div">
+              <div className="card-div" >
                 <Switch>
                   <Route path="/dashboard">
                     <Dashboard></Dashboard>
@@ -138,7 +138,7 @@ class App extends Component {
                   <Route path="/requests">
                     <Requests wallet={this.state.accounts[0]} contract={this.state.contract} web3={this.state.web3}></Requests>
                   </Route>
-                  <Route path="/requests">
+                  <Route path="/donate">
                     <Donate></Donate>
                   </Route>
                   <Route path="/map">
