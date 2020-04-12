@@ -17,7 +17,7 @@ export default class Requests extends React.Component {
                 'content-type': 'application/json'
             },
             "body": JSON.stringify({
-                "hospitalId": "252sdfgsdgv"
+                "hospitalId": this.props.wallet
             })
         }).then(res => res.json()).then(res => {
             console.log(res)
@@ -25,7 +25,7 @@ export default class Requests extends React.Component {
         })
     }
 
-    accept = async(_id) => {
+    accept = async(_id, i) => {
         const response = await fetch("http://localhost:8000/accept", {
             "method": "POST",
             headers: {
@@ -37,6 +37,10 @@ export default class Requests extends React.Component {
         }).then(res => res.json()).then(res => {
             console.log(res)
         })
+        // Delete pending from list
+        let temp = this.state.pending
+        temp.splice(i)
+        this.setState({ pending: temp })
     }
 
     addPending = data => {
@@ -54,7 +58,7 @@ export default class Requests extends React.Component {
                             <div style={{ height: '60px', width: '100%', margin: '10px', padding: '15px', background: '#ffe5b4', justifyContent: 'flex-start', borderRadius: 10, display: 'flex', alignItems: 'center' }}>
                                 <p style={{ fontSize: '18px' }}>{req.amount} {req.type}</p>
                                 <div style={{ marginLeft: 'auto', height: '60px', width: '100px', display: 'flex', alignItems: 'center' }}>
-                                    <Button color='green' size='md' appearance='primary' style={{ marginLeft: 'auto' }} onClick={() => this.accept(req._id)}>Yes</Button>
+                                    <Button color='green' size='md' appearance='primary' style={{ marginLeft: 'auto' }} onClick={() => this.accept(req._id, i)}>Yes</Button>
                                     <Button color='red' size='md' appearance='primary' style={{ marginLeft: 'auto' }}>No</Button>
                                 </div>
                             </div>
