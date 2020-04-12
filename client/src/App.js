@@ -9,6 +9,7 @@ import Dashboard from './components/dashboard'
 import Requests from './components/requests'
 import Transactions from './components/transactions'
 import Profile from './components/profile'
+import Donate from './components/donate'
 
 import {
   BrowserRouter as Router,
@@ -109,6 +110,11 @@ class App extends Component {
                         Pending Requests
                       </Nav.Item>
                     </Link>
+                    <Link to="/donate" style={{textDecoration : "none"}}>
+                      <Nav.Item eventKey="2" icon={<Icon icon="heart-o" />}>
+                        Donate
+                      </Nav.Item>
+                    </Link>
                     <Link to="/map" style={{textDecoration : "none"}}>
                       <Nav.Item eventKey="2" icon={<Icon icon="map" />}>
                         Map
@@ -132,6 +138,9 @@ class App extends Component {
                   </Route>
                   <Route path="/requests">
                     <Requests></Requests>
+                  </Route>
+                  <Route path="/requests">
+                    <Donate></Donate>
                   </Route>
                   <Route path="/map">
                     <Map></Map>
