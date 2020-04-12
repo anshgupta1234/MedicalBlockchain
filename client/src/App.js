@@ -10,7 +10,7 @@ import Transactions from './components/transactions'
 import Profile from './components/profile'
 import Donate from './components/donate'
 import History from './components/history'
-
+import Logo from './meditrak2.png'
 
 import {
   BrowserRouter as Router,
@@ -100,7 +100,10 @@ class App extends Component {
         <div className="App">
           <Router>
             <div className="sidenav-div">
-              <div className="logo-div"></div>
+              <div className="logo-div">
+                <img src={Logo} style={{marginLeft: "10px"}}width="320"></img>
+                <div style={{color : "white", fontSize: "25px"}}>Meditrak</div>
+              </div>
               <Sidenav
                 activeKey={this.state.activeKey}
                 onSelect={this.handleSelect}

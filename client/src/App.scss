@@ -171,7 +171,6 @@ body {
 
   .sideNav{
     height: 100%;
-    margin-top: 200px;
   }
 
   .content-div{
@@ -194,12 +193,13 @@ body {
   }
 
   .logo-div{
-    position: absolute;
-    left: 0;
-    top: 0;
+
     width: 230px;
-    height: 200px;
-    background-image: url("./meditrak2.png");
-    background-size: cover;
-    background-position: center center;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    font-family: 'Montserrat', sans-serif;
+
   }
